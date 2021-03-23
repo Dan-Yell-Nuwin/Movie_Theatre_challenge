@@ -23,4 +23,12 @@ It will also print out the path of the out file with all the seatings for each r
 * Assume that for each group booked, they must be separated by at least 3 rows horizontally and have 1 empty row buffer.
 * We will book each group horizontally and keep booking in the next line.
 
+# Algorithm:
+* To ensure customer satisfaction and safety, we will make sure that each group is separated by 3 buffers horizontally and 1 row. 
+* Each time a customer books a number of seats, we will book the next n seats and then provide the buffers.
+* By giving both a buffer of 3 seats and a row, we are giving up alot of space to accomodate for this. If we want to use as much seating as possible, it might be best to book each group separated by 3 seats without a row buffer in between each row.
+
+# Space and Time complexity
+* We know that this algorithm would be O(N) given that there are N seats(200 total) because the worst case scenario would be to book N seats which is O(N) for the space and the time it would take would be O(cN).
+
 
