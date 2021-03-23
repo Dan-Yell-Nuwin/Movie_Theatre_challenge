@@ -6,6 +6,7 @@ public class Solution {
         ArrayList<String> list = new ArrayList<String>();
         if (args.length > 0) {
             try {
+                //file reading, read each line in file and put into arraylist
                 File file = new File(args[0]);
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -14,6 +15,7 @@ public class Solution {
                     list.add(line);
                     line = br.readLine();
                 }
+                //use helper function to get seating
                 list = getSeats(list);
                 /*
                 for (String s: list) {
@@ -36,6 +38,7 @@ public class Solution {
         }
     }
     public static ArrayList<String> getSeats(ArrayList<String> orders) {
+        //helper functino to get seating based on giving reservation orders
         // 10 rows, 20 seats per row
         char [] row = new char[10];
         for (int i = 0; i < 10; i++) {
@@ -48,7 +51,13 @@ public class Solution {
             if (full) break;
             String [] str = order.split(" ");
             ArrayList<String> seats = new ArrayList<String>();
+
             int num_seat = Integer.parseInt(str[1]);
+            /*
+                for each reservation, reserve a seat until you hit the end of the row,
+                then move to next row. Otherwise if there are no more seats,
+                just print out movie theatre full.
+             */
             while (c < 20 && num_seat > 0) {
                 seats.add("" + row[r] + c);
                 num_seat--;
